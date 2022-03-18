@@ -12,8 +12,13 @@ const DATABASE_URL = process.env.DATABASE_URL || "mongodb://localhost:27017";
 connectDB(DATABASE_URL);
 
 // middlware
+
+app.use(express.urlencoded({extended:false}))
+
+
 // static Files
 app.use('/student',express.static(join(process.cwd(), "public")));
+app.use('/student/edit',express.static(join(process.cwd(), "public")));
 
 // Template Engine
 app.set('view engine','ejs');
